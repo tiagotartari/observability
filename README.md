@@ -4,6 +4,8 @@ This repository is dedicated to exploring and demonstrating the implementation o
 
 Observability is a crucial feature for any production application, as it allows developers to understand what's happening inside the system and identify potential issues.
 
+**The projects in this repository must not be replicated in production, use only as a study.**
+
 ## What is Continuous Profiling?
 
 Continuous Profiling is a performance data collection technique that continuously records profile information from a system. Unlike traditional profiling, which is typically only enabled during development or testing, Continuous Profiling is used on systems in production. This allows you to identify problems that only appear under real working conditions.
