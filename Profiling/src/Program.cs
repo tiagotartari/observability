@@ -9,7 +9,6 @@ Pyroscope.Profiler.Instance.SetAllocationTrackingEnabled(true);
 Pyroscope.Profiler.Instance.SetExceptionTrackingEnabled(true);
 Pyroscope.Profiler.Instance.SetContentionTrackingEnabled(true);
 Pyroscope.Profiler.Instance.SetCPUTrackingEnabled(true);
-Pyroscope.Profiler.Instance.SetExceptionTrackingEnabled(true);
 
 var app = builder.Build();
 app.UseSwagger();
