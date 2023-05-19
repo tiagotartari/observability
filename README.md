@@ -16,6 +16,8 @@ This practice allows developers to proactively identify performance problems and
 
 This project focuses on integrating Pyroscope, an open-source application performance analysis platform, with a .NET application. Our goal is to demonstrate how it's possible to obtain detailed, real-time insights into application performance using Pyroscope.
 
+![enter image description here](http://tiagotartari.net/wp-content/uploads/2023/05/pyroscope-profiling.png)
+
 ### Why Pyroscope?
 Pyroscope offers continuous profiling, allowing us to understand the behavior of our code during production execution. With it, we can identify performance bottlenecks, optimize resource usage, and ultimately improve the overall quality of our software. [Learn more about Pyroscope here.](https://pyroscope.io/)
 
