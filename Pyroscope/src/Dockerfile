@@ -9,15 +9,15 @@ EXPOSE 80
 
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src
-COPY ["Demo.Profiling.csproj", "."]
-RUN dotnet restore "./Demo.Profiling.csproj"
+COPY ["Demo.Pyroscope.csproj", "."]
+RUN dotnet restore "./Demo.Pyroscope.csproj"
 
 COPY . .
 WORKDIR "/src/."
-RUN dotnet build "Demo.Profiling.csproj" -c Release -o /app/build
+RUN dotnet build "Demo.Pyroscope.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "Demo.Profiling.csproj" -c Release -o /app/publish -r $(dotnet --info | grep RID | cut -b 6- | tr -d ' ')
+RUN dotnet publish "Demo.Pyroscope.csproj" -c Release -o /app/publish -r $(dotnet --info | grep RID | cut -b 6- | tr -d ' ')
 
 FROM base AS final
 WORKDIR /app
@@ -34,4 +34,4 @@ ENV PYROSCOPE_PROFILING_ALLOCATION_ENABLED=true
 ENV PYROSCOPE_PROFILING_CONTENTION_ENABLED=true
 ENV PYROSCOPE_PROFILING_EXCEPTION_ENABLED=true
 
-ENTRYPOINT ["dotnet", "/app/Demo.Profiling.dll"]
+ENTRYPOINT ["dotnet", "/app/Demo.Pyroscope.dll"]

@@ -5,9 +5,9 @@ services:
   demo:
     build: 
       context: ./src
-    container_name: demo
+    container_name: demo_pyroscope
     ports:
-      - 7000:80
+      - 8000:80
     environment:
       - PYROSCOPE_APPLICATION_NAME=demo.profiling
       - PYROSCOPE_SERVER_ADDRESS=http://pyroscope:4040

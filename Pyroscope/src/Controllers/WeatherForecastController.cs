@@ -1,6 +1,7 @@
+using Demo.Profiling;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Demo.Profiling.Controllers
+namespace Demo.Pyroscope.Controllers
 {
     [ApiController]
     [Route("[controller]")]
@@ -22,9 +23,9 @@ namespace Demo.Profiling.Controllers
         public IActionResult Get()
         {
             var listOfWeatherForecast = new List<WeatherForecast>(5);
-            var labels = Pyroscope.LabelSet.Empty.BuildUpon().Add("WeatherForecast", "WeatherForecast").Build();
+            var labels = global::Pyroscope.LabelSet.Empty.BuildUpon().Add("WeatherForecastController", "GetWeatherForecast").Build();
 
-            Pyroscope.LabelsWrapper.Do(labels, () => 
+            global::Pyroscope.LabelsWrapper.Do(labels, () => 
             {
                 listOfWeatherForecast.AddRange(Enumerable.Range(1, 5).Select(index => new WeatherForecast
                 {

@@ -1,0 +1,47 @@
+version: "3.9"
+
+services:
+  
+  datadog:
+    image: datadog/agent:latest
+    container_name: datadog
+    ports:
+      - 8126:8126
+      - 18125:8125
+    environment:
+      - DD_API_KEY=""    
+      - DD_SITE=us3.datadoghq.com
+  
+      - DD_APM_NON_LOCAL_TRAFFIC=true
+
+    networks: 
+      - demo
+    volumes:
+     - /var/run/docker.sock:/var/run/docker.sock
+     - /proc/:/host/proc/:ro
+     - /sys/fs/cgroup:/host/sys/fs/cgroup:ro
+
+  demo:
+    build: 
+      context: ./src
+    container_name: demo
+    ports:
+      - 7000:80
+    environment:
+      - DD_AGENT_HOST=datadog
+      - DD_ENV=development
+      - DD_APM_ENABLED=true      
+      - DD_PROFILING_ENABLED=true      
+      - DD_RUNTIME_METRICS_ENABLED=true
+      - DD_PROFILING_EXCEPTION_ENABLED=true
+      - DD_PROFILING_ALLOCATION_ENABLED=true
+      - DD_PROFILING_HEAP_ENABLED=true
+      - DD_TRACE_DOTNET=true      
+    depends_on:
+      - datadog
+    networks:
+      - demo
+
+networks:
+  demo:
+    driver: bridge    
